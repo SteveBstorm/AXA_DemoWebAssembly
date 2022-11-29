@@ -1,0 +1,28 @@
+﻿@page "/demo1/{id : int}"
+@inherits Demo1Base
+@inject NavigationManager nav
+<h3>Demo1</h3>
+<p>@Nombre</p>
+
+
+<input type="number" @bind-value="Nombre" />
+@*<button @onclick="ChangeValue">click</button>*@
+
+<div style="max-height : 300px; overflow-y:scroll;">
+<ul>
+    <Virtualize Context="s" Items="MyService.GetAll()">
+        <li><button @onclick="() => ChangeValue(s)">@s</button></li>
+    </Virtualize>
+    @*@foreach(string s in MyService.GetAll()){
+        <li>@s</li>
+    }*@
+</ul>
+</div>
+
+<SousComposant Param="@SelectedItem" />
+
+@code {
+    public void redirect(){
+        nav.NavigateTo("");
+    }
+}

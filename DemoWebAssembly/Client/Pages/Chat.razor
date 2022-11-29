@@ -1,0 +1,13 @@
+﻿@page "/chatbox"
+<h3>Chat</h3>
+<input type="text" @bind-value="NewMessage" />
+<button @onclick="SendMessage">Envoi</button>
+
+<ul>
+    @foreach(string m in Messages) {
+        <li>@m</li>
+    }
+</ul>
+@code {
+
+}
